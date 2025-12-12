@@ -71,6 +71,7 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// just testing db connection
 app.get('/test-db', async (req, res) => {
     try {
         const result = await db.query('SELECT NOW()');
