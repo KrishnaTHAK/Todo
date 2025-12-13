@@ -21,13 +21,13 @@
         </section>
 
         <ul id="todo-list">
-            <li>
+            <!-- <li>
                 <span>Tasks</span>
                 <div class="action-btn-container">
                     <button class="edit-btn">✒️</button>
                     <button class="delete-btn">❌</button>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </main>
 
@@ -136,12 +136,29 @@
                 <span>${task}</span>
                 <div class="action-btn-container">
                     <button class="edit-btn" onclick="editTodo(${id})">✒️</button>
+                    <button class="completed-btn" onclick="completedTodo(${id})">👍🏾</button>
                     <button class="delete-btn" onclick="deleteTodo(${id})">❌</button>                    
                 </div>
             `;
             list.appendChild(li);
         }
 
+        async function completedTodo(id){
+            const response = await fetch(`/todos/${id}`,{
+                method : 'PUT',
+                headers: {
+                    'Content-Type' : 'application/json',
+                    'token' : token
+                },
+                body: JSON.stringify({task_completed : true})
+            })
+            if(response.ok){
+                alert('Congratulations! On completing the Task!\nConsistency is the key!')
+                deleteTodo(id);
+            } else {
+                alert('Filed to Update!');
+            }
+        };
         
         //  Global Variables for Edit Logic 
             let currentEditId = null;

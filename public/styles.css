@@ -104,6 +104,21 @@ li:last-child {
     transform: scale(1.1); 
 }
 
+.completed-btn {
+    background-color: #330771;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin-right: 5px; 
+}
+
+.completed-btn:hover {
+    background-color: #d6b511;
+    transform: scale(1.1); 
+}
+
 .modal {
     position: fixed;
     top: 0;
